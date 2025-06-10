@@ -1,0 +1,10 @@
+{
+  "shoppingLists": "Mis Listas de Compras",
+  "newList": "Nueva Lista de Compras",
+  "createList": "Crear Lista",
+  "cancel": "Cancelar",
+  "deleteConfirm": "¿Estás seguro que deseas eliminar esta lista?",
+  "delete": "Eliminar",
+  "currency": "Moneda",
+  "noLists": "Aún no hay listas"
+}

@@ -1,0 +1,10 @@
+{
+  "shoppingLists": "My Shopping Lists",
+  "newList": "New Shopping List",
+  "createList": "Create List",
+  "cancel": "Cancel",
+  "deleteConfirm": "Are you sure you want to delete this list?",
+  "delete": "Delete",
+  "currency": "Currency",
+  "noLists": "No lists yet"
+}
