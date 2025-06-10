@@ -1,6 +1,6 @@
 # 🛒 Lista de Compras Inteligente
 
-![Vista previa](public/screenshot.png)
+![Captura de pantalla](assets/screenshot.png)
 
 Una aplicación web moderna y responsiva desarrollada con **React** y **Tailwind CSS**, que te permite crear, organizar y gestionar múltiples listas de compras de forma clara, eficiente y profesional. Ideal para quienes buscan ahorrar tiempo y mantener sus compras bien planificadas.
 
@@ -60,5 +60,7 @@ npm run dev
 
 ## 👩‍💻 Autora
 Alejandra Girón
+
 📧 alejandragironmira@gmail.com
+
 💻 GitHub: alejandracode
