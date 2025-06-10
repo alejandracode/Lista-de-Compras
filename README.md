@@ -35,13 +35,13 @@ Sigue estos pasos para clonar y ejecutar la app en tu máquina local:
 `1.`. Clona el repositorio:
 
 ```bash
-git clone https://github.com/alejandracode/lista-de-compras.git
+https://github.com/alejandracode/Lista-de-Compras.git
 ```
 
 `2.`. Accede al directorio:
 
 ```bash
-cd lista-de-compras
+cd Lista-de-Compras
 ```
 
 `3.`. Instala las dependencias
@@ -59,6 +59,7 @@ npm run dev
 `5.`. Visita http://localhost:5173 en tu navegador.
 
 ## 👩‍💻 Autora
+
 Alejandra Girón
 
 📧 alejandragironmira@gmail.com
