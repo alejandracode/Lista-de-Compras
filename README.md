@@ -8,7 +8,7 @@ Una aplicación web moderna y responsiva desarrollada con **React** y **Tailwind
 
 ## ✨ Funcionalidades
 
-- 📝 **Múltiples listas**: Crea listas con títulos personalizados, al estilo de Samsung Notes.
+- 📝 **Múltiples listas**: Crea listas con títulos personalizados
 - 🛍 **Agrega productos fácilmente**: Añade artículos con nombre y precio.
 - 💲 **Cálculo automático**: Suma los precios de los productos por lista.
 - 🌎 **Soporte de monedas**: Cambia entre USD, EUR y otras monedas.
