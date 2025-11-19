@@ -4,14 +4,12 @@ import ListView from './pages/ListView';
 import useStore from './store/useStore';
 import { useTranslation } from "react-i18next";
 
-
 function App() {
   const [currentView, setCurrentView] = useState('home');
-  const { setCurrentList } = useStore();
+  const { setCurrentList, currentListId } = useStore();
+  const { t } = useTranslation();
 
-  const { t, i18n } = useTranslation();
-
-  const handleListSelect = (listId) => {
+  const handleListSelect = (listId: string) => {
     setCurrentList(listId);
     setCurrentView('list');
   };
@@ -22,12 +20,13 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    // Fondo degradado responsivo y tipografía moderna
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 text-slate-900 font-sans selection:bg-blue-200 selection:text-blue-900">
       {currentView === 'home' ? (
         <Home onListSelect={handleListSelect} />
       ) : (
         <ListView 
-          listId={useStore.getState().currentListId} 
+          listId={currentListId} 
           onBack={handleBackToHome} 
         />
       )}

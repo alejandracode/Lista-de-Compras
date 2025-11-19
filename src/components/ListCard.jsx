@@ -11,130 +11,81 @@ const ListCard = ({ list, onClick }) => {
   const itemCount = list.products.length;
   const purchasedCount = list.products.filter(p => p.purchased).length;
 
-  const handleEdit = (e) => {
-    e.stopPropagation();
-    setIsEditing(true);
-  };
-
-  const handleSave = () => {
-    if (editName.trim()) {
-      updateListName(list.id, editName.trim());
-    }
-    setIsEditing(false);
-  };
-
-  const handleCancel = () => {
-    setEditName(list.name);
-    setIsEditing(false);
-  };
-
-  const handleDelete = (e) => {
-    e.stopPropagation();
-    if (window.confirm('Are you sure you want to delete this list?')) {
-      deleteList(list.id);
-    }
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      handleSave();
-    } else if (e.key === 'Escape') {
-      handleCancel();
-    }
-  };
+  const handleEdit = (e) => { e.stopPropagation(); setIsEditing(true); };
+  const handleSave = () => { if (editName.trim()) updateListName(list.id, editName.trim()); setIsEditing(false); };
+  const handleCancel = () => { setEditName(list.name); setIsEditing(false); };
+  const handleDelete = (e) => { e.stopPropagation(); if (window.confirm('¿Eliminar esta lista?')) deleteList(list.id); };
+  const handleKeyPress = (e) => { if (e.key === 'Enter') handleSave(); else if (e.key === 'Escape') handleCancel(); };
 
   return (
     <div 
-      className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-6 cursor-pointer border border-gray-100 hover:border-blue-200 group"
+      className="group relative bg-white/70 backdrop-blur-sm rounded-2xl p-5 sm:p-6 cursor-pointer border border-white/50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-out"
       onClick={onClick}
     >
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex items-center space-x-3">
-          <div className="p-2 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
+      {/* Barra superior decorativa */}
+      <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-t-2xl opacity-80" />
+
+      <div className="flex items-start justify-between mb-4 mt-1">
+        <div className="flex items-center space-x-3 w-full overflow-hidden">
+          <div className="p-2.5 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl shadow-inner flex-shrink-0">
             <ShoppingCart className="w-5 h-5 text-blue-600" />
           </div>
+          
           {isEditing ? (
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1 w-full pr-2">
               <input
                 type="text"
                 value={editName}
                 onChange={(e) => setEditName(e.target.value)}
                 onKeyPress={handleKeyPress}
-                className="text-lg font-semibold text-gray-900 bg-transparent border-b-2 border-blue-300 focus:border-blue-500 outline-none px-1"
+                className="text-lg font-bold text-slate-800 bg-transparent border-b-2 border-blue-500 focus:outline-none w-full min-w-0"
                 autoFocus
                 onClick={(e) => e.stopPropagation()}
               />
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleSave();
-                }}
-                className="p-1 text-green-600 hover:bg-green-50 rounded"
-              >
-                <Check className="w-4 h-4" />
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleCancel();
-                }}
-                className="p-1 text-red-600 hover:bg-red-50 rounded"
-              >
-                <X className="w-4 h-4" />
-              </button>
+              <button onClick={(e) => {e.stopPropagation(); handleSave();}} className="p-1.5 bg-green-50 text-green-600 rounded-lg hover:bg-green-100"><Check className="w-4 h-4"/></button>
+              <button onClick={(e) => {e.stopPropagation(); handleCancel();}} className="p-1.5 bg-red-50 text-red-500 rounded-lg hover:bg-red-100"><X className="w-4 h-4"/></button>
             </div>
           ) : (
-            <h3 className="text-lg font-semibold text-gray-900 truncate">
+            <h3 className="text-lg font-bold text-slate-800 truncate pr-2">
               {list.name}
             </h3>
           )}
         </div>
         
         {!isEditing && (
-          <div className="flex items-center space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
-            <button
-              onClick={handleEdit}
-              className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
-            >
-              <Edit2 className="w-4 h-4" />
-            </button>
-            <button
-              onClick={handleDelete}
-              className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-            >
-              <Trash2 className="w-4 h-4" />
-            </button>
+          <div className="flex items-center space-x-1 flex-shrink-0">
+            <button onClick={handleEdit} className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-colors"><Edit2 className="w-4 h-4" /></button>
+            <button onClick={handleDelete} className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-full transition-colors"><Trash2 className="w-4 h-4" /></button>
           </div>
         )}
       </div>
 
-      <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-gray-500">Total</span>
-          <span className="text-xl font-bold text-gray-900">
+      <div className="space-y-4">
+        <div className="flex items-baseline justify-between">
+          <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Total</span>
+          <span className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-700">
             {formatCurrency(total)}
           </span>
         </div>
         
-        <div className="flex items-center justify-between text-sm">
-          <span className="text-gray-500">
-            {itemCount} item{itemCount !== 1 ? 's' : ''}
-          </span>
-          {purchasedCount > 0 && (
-            <span className="text-green-600 font-medium">
-              {purchasedCount} completed
+        <div>
+          <div className="flex items-center justify-between text-xs font-bold text-slate-500 mb-2">
+            <span>{itemCount} items</span>
+            <span className={purchasedCount === itemCount && itemCount > 0 ? "text-green-600" : "text-blue-600"}>
+              {itemCount > 0 ? Math.round((purchasedCount / itemCount) * 100) : 0}%
             </span>
-          )}
-        </div>
-        
-        {itemCount > 0 && (
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          </div>
+          <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
             <div 
-              className="bg-green-500 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${(purchasedCount / itemCount) * 100}%` }}
+              className={`h-full rounded-full transition-all duration-500 ease-out ${
+                purchasedCount === itemCount && itemCount > 0 
+                  ? 'bg-gradient-to-r from-green-400 to-emerald-500' 
+                  : 'bg-gradient-to-r from-blue-400 to-indigo-500'
+              }`}
+              style={{ width: `${itemCount > 0 ? (purchasedCount / itemCount) * 100 : 0}%` }}
             />
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
